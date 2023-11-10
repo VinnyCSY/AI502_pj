@@ -67,14 +67,12 @@ def get_dagan_args():
         "--save_checkpoint_path",
         nargs="?",
         type=str,
-        default='./checkpoints/dagan_save.pt',
         help="Filepath to save intermediate training checkpoints.",
     )
     parser.add_argument(
         "--load_checkpoint_path",
         nargs="?",
         type=str,
-        default='./checkpoints/dagan_load.pt',
         help="Filepath of intermediate checkpoint from which to resume training.",
     )
     parser.add_argument(
