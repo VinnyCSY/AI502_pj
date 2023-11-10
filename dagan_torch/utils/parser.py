@@ -7,13 +7,17 @@ def get_dagan_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
-        "dataset_path",
+        "--dataset_path",
         type=str,
+        default='datasets/omniglot_data.npy',
         help="Filepath for dataset on which to train dagan. File should be .npy format with shape "
         "(num_classes, samples_per_class, height, width, channels).",
     )
     parser.add_argument(
-        "final_model_path", type=str, help="Filepath to save final dagan model."
+        "--final_model_path", 
+        type=str, 
+        default='checkpoints/final_omniglot_generator.pt',
+        help="Filepath to save final dagan model."
     )
     parser.add_argument(
         "--batch_size",
@@ -63,12 +67,14 @@ def get_dagan_args():
         "--save_checkpoint_path",
         nargs="?",
         type=str,
+        default='./checkpoints/dagan_save.pt',
         help="Filepath to save intermediate training checkpoints.",
     )
     parser.add_argument(
         "--load_checkpoint_path",
         nargs="?",
         type=str,
+        default='./checkpoints/dagan_load.pt',
         help="Filepath of intermediate checkpoint from which to resume training.",
     )
     parser.add_argument(
