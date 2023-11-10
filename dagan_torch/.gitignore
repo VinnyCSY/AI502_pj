@@ -1,4 +1,4 @@
-datasets/*
+# datasets/*
 checkpoints/*
 !*readme.txt
 *.DS_Store
