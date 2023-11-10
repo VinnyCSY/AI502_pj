@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     libxext6 \
     nano \
     sudo
+    
 RUN pip install timm matplotlib pandas  \
     torchvision \
     numpy>=1.14.3 \
@@ -28,55 +29,5 @@ RUN pip install timm matplotlib pandas  \
 	scikit-video \
 	torch \
     gdown
-# RUN echo "Installing dependencies..." && \
-# 	apt-get -y --no-install-recommends update && \
-# 	apt-get -y --no-install-recommends upgrade && \
-# 	apt-get install -y --no-install-recommends \
-# 	wget \
-# 	build-essential \
-# 	cmake \
-# 	git \
-# 	libatlas-base-dev \
-# 	libprotobuf-dev \
-# 	libleveldb-dev \
-# 	libsnappy-dev \
-# 	libhdf5-serial-dev \
-# 	protobuf-compiler \
-# 	libboost-all-dev \
-# 	libgflags-dev \
-# 	libgoogle-glog-dev \
-# 	liblmdb-dev \
-# 	pciutils \
-# 	python3-setuptools \
-# 	python3-dev \
-# 	python3-pip \
-# 	opencl-headers \
-# 	ocl-icd-opencl-dev \
-# 	libviennacl-dev \
-# 	libcanberra-gtk-module \
-# 	libopencv-dev && \
-# 	python3 -m pip install \
-# 	numpy \
-# 	protobuf \
-# 	opencv-python
 
-# RUN echo "Downloading and building OpenPose..." && \
-# 	git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git && \
-# 	mkdir -p /openpose/build && \
-# 	cd /openpose/build && \
-# 	cmake .. && \
-# 	make -j`nproc` && \
-# 	wget -P /openpose/models/pose/coco/ https://github.com/foss-for-synopsys-dwc-arc-processors/synopsys-caffe-models/raw/master/caffe_models/openpose/caffe_model/pose_iter_440000.caffemodel
-
-# # Add new user to avoid running as root
-# RUN useradd -ms /bin/bash docker
-# USER docker
-WORKDIR /home/docker/mmnet
-# docker build -t sycho_{}:latest .
-# docker run -it --ipc=host --gpus device=0 -v /home/sycho/SLRT/TwoStreamNetwork:/home/docker/two_stream_slr -v /data/sycho:/home/docker/two_stream_slr/data sycho_{}:latest
-
-# docker exec -it {} bash
-# conda env list
-# source activate slt
-# RUN conda env create -f environment.yml
-# RUN source activate slt
+# WORKDIR /home/sycho
