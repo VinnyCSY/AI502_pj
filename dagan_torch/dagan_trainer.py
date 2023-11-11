@@ -25,8 +25,9 @@ class DaganTrainer:
         critic_iterations=5,
         print_every=50,
         num_tracking_images=0,
-        save_checkpoint_path=None,
+        save_dir_path=None,
         load_checkpoint_path=None,
+        rendered_images_path=None,
         display_transform=None,
         should_display_generations=True,
     ):
@@ -43,7 +44,8 @@ class DaganTrainer:
         self.print_every = print_every
         self.num_tracking_images = num_tracking_images
         self.display_transform = display_transform or transforms.ToTensor()
-        self.checkpoint_path = save_checkpoint_path
+        self.checkpoint_dir_path = save_dir_path
+        self.rendered_images_path = rendered_images_path
         self.should_display_generations = should_display_generations
 
         # Track progress of fixed images throughout the training
@@ -172,7 +174,8 @@ class DaganTrainer:
     def render_img(self, arr):
         arr = (arr * 0.5) + 0.5
         arr = np.uint8(arr * 255)
-        display(Image.fromarray(arr, mode="L").transpose(PIL.Image.TRANSPOSE))
+        im = Image.fromarray(arr, mode="L").transpose(PIL.Image.TRANSPOSE)
+        im.save(self.rendered_images_path+"img.png")
 
     def sample_train_images(self, n, data_loader):
         with warnings.catch_warnings():
@@ -225,7 +228,7 @@ class DaganTrainer:
             print("G: {}".format(self.losses["G"][-1]))
 
     def _save_checkpoint(self):
-        if self.checkpoint_path is None:
+        if self.checkpoint_dir_path is None:
             return
         checkpoint = {
             "epoch": self.epoch,
@@ -238,7 +241,7 @@ class DaganTrainer:
             "tracking_z": self.tracking_z,
             "tracking_images_gens": self.tracking_images_gens,
         }
-        torch.save(checkpoint, self.checkpoint_path)
+        torch.save(checkpoint, self.checkpoint_dir_path+'epoch_'+str(self.epoch)+'.pt')
 
     def hydrate_checkpoint(self, checkpoint_path):
         checkpoint = torch.load(checkpoint_path, map_location=self.device)

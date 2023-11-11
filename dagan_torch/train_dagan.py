@@ -24,8 +24,9 @@ if __name__ == '__main__':
     raw_data = np.load(dataset_path).copy()
 
     final_generator_path = args.final_model_path
-    save_checkpoint_path = args.save_checkpoint_path
+    save_dir_path = args.save_dir_path
     load_checkpoint_path = args.load_checkpoint_path
+    rendered_images_path = args.rendered_images_path
     in_channels = raw_data.shape[-1]
     img_size = args.img_size or raw_data.shape[2]
     num_training_classes = args.num_training_classes
@@ -88,8 +89,9 @@ if __name__ == '__main__':
         critic_iterations=5,
         print_every=75,
         num_tracking_images=10,
-        save_checkpoint_path=save_checkpoint_path,
+        save_dir_path=save_dir_path,
         load_checkpoint_path=load_checkpoint_path,
+        rendered_images_path=rendered_images_path,
         display_transform=display_transform,
         should_display_generations=should_display_generations,
     )

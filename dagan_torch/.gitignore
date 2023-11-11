@@ -1,5 +1,7 @@
 # datasets/*
-# checkpoints/*
+checkpoints/*
+debug/*
+!*final_omniglot_generator.pt
 !*readme.txt
 *.DS_Store
 .ipynb_checkpoints*

@@ -64,15 +64,23 @@ def get_dagan_args():
         "Assumes lower bound is 0 (i.e. range of values is [0, max_pixel_value]).",
     )
     parser.add_argument(
-        "--save_checkpoint_path",
+        "--save_dir_path",
         nargs="?",
         type=str,
-        help="Filepath to save intermediate training checkpoints.",
+        default="checkpoints/",
+        help="Directory path to save intermediate training checkpoints.",
     )
     parser.add_argument(
         "--load_checkpoint_path",
         nargs="?",
         type=str,
+        help="Filepath of intermediate checkpoint from which to resume training.",
+    )
+    parser.add_argument(
+        "--rendered_images_path",
+        nargs="?",
+        type=str,
+        default="debug/",
         help="Filepath of intermediate checkpoint from which to resume training.",
     )
     parser.add_argument(
