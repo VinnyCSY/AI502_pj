@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     
 RUN pip install timm matplotlib pandas  \
     torchvision \
-    numpy \
+    numpy>=1.14.3 \
     scipy \
     scikit-learn \
     opencv-python \
@@ -43,12 +43,5 @@ ENV FORCE_CUDA="1"
 RUN pip install -r requirements.txt
 RUN pip install --no-cache-dir -e .
 
-# pip install mmgeneration/requirements.txt
-# WORKDIR /mmgeneration
 
-# RUN pip install -r requirements.txt
-# RUN pip install mmcls ninja prettytable requests tqdm yapf 
-# RUN pip install "coverage < 7.0.0" flake8 interrogate isort==4.3.21 pytest pytest-runner
-
-# RUN pip install --no-cache-dir -e .
 WORKDIR /home/sycho
