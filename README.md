@@ -4,22 +4,26 @@
 ### build image
 docker build -t {image name}:latest .
 ### pull image
-docker pull {remote image path}
+docker pull vinny1126/ai502:latest
 ### run
-docker run -it --ipc=host --gpus device=0 -v {local directory path}:{docker directory path} {image name}:latest
+docker run -it --ipc=host --gpus device=0 -v {local directory path}:{docker directory path} --name {container name} {image name}:latest
 ### view docker images
 docker images -a
 ### view all docker containers
 docker ps -a
 ### start
 docker start {container name}
+### stop
+docker stop {container name}
 ### exec
-docker exec -it {container_name} bash
+docker exec -it {container name} bash
 ### remove image
-docker rmi {image name or containerID}
+docker rmi {image name}
+### remove containter
+docker rm {container ID or container name}
 
 ## Tensorboard
-tensorboard --logdir={directory}/tensorboard --port=6008
+tensorboard --logdir={directory}/tensorboard --port={local port}
 
 ### copy file from local to server
-scp -r models {username}@143.248.47.110:{directory}
+scp -r {directory or files} {username}@{server path}:{directory}

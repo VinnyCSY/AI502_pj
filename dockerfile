@@ -44,4 +44,4 @@ RUN pip install -r requirements.txt
 RUN pip install --no-cache-dir -e .
 
 
-WORKDIR /home/sycho
+# WORKDIR /home/sycho
